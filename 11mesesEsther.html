@@ -112,6 +112,7 @@
     <div class="imagen-romantica" style="background-image: url('Esther y yo3.jpg');"></div>
     <h2>¿Quieres estar toda la vida conmigo? 💍</h2>
     <button onclick="siguientePantalla(4)">Sí, siempre contigo 💘</button>
+    <button id="botonNo" onmouseover="moverBotonNo()">No 😢</button>
   </div>
 
   <div id="pantalla4" class="pantalla">
@@ -148,8 +149,19 @@
         setTimeout(() => el.remove(), 6000);
       }, 300);
     }
+
+    // Mover botón "No"
+    const botonNo = document.getElementById("botonNo");
+    function moverBotonNo() {
+      const maxX = window.innerWidth - botonNo.offsetWidth;
+      const maxY = window.innerHeight - botonNo.offsetHeight;
+      const nuevoX = Math.floor(Math.random() * maxX);
+      const nuevoY = Math.floor(Math.random() * maxY);
+      botonNo.style.position = "absolute";
+      botonNo.style.left = `${nuevoX}px`;
+      botonNo.style.top = `${nuevoY}px`;
+    }
   </script>
 </body>
 </html>
-
 
