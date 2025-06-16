@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz 11 Meses</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #ffdde1, #ee9ca7);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      text-align: center;
+    }
+    .pantalla {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      animation: fadeIn 1.2s ease-in-out;
+      padding: 20px;
+    }
+    .pantalla.activa {
+      display: flex;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    h1, h2, p {
+      margin: 20px;
+      color: #c9184a;
+    }
+    h1 {
+      font-size: 3em;
+      background: -webkit-linear-gradient(#ff758c, #ff7eb3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: heartbeat 1.5s infinite;
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+    button {
+      background-color: #fff0f5;
+      color: #c9184a;
+      border: 2px solid #c9184a;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    button:hover {
+      background-color: #c9184a;
+      color: white;
+    }
+    .teamo {
+      position: absolute;
+      font-size: 1.2em;
+      color: #ff4d6d;
+      animation: flotar 6s linear infinite;
+    }
+    @keyframes flotar {
+      from {
+        transform: translateY(100vh);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-10vh);
+        opacity: 0;
+      }
+    }
+    .imagen-romantica {
+      width: 180px;
+      height: 180px;
+      background-image: url('https://i.imgur.com/ZbYk1jx.png'); /* imagen de corazón estilo acuarela */
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin-bottom: 20px;
+      animation: heartbeat 1.8s infinite;
+    }
+  </style>
+</head>
+<body>
+  <div id="pantalla1" class="pantalla activa">
+    <div class="imagen-romantica"></div>
+    <h1>Feliz 11 Meses, Mi Princesa 💖</h1>
+    <p>Hoy no solo celebramos un número, celebramos un amor que crece cada día, que me llena el alma, y que me hace desear un futuro eterno contigo.</p>
+    <button onclick="siguientePantalla(2)">Seguir amando 👉</button>
+  </div>
+
+  <div id="pantalla2" class="pantalla">
+    <h2>Durante estos 11 meses has sido mi refugio, mi alegría y mi inspiración.</h2>
+    <p>No hay día que no agradezca por ti. Gracias por tu risa, tus abrazos, tus detalles y por todo lo que eres.</p>
+    <button onclick="siguientePantalla(3)">Quiero más</button>
+  </div>
+
+  <div id="pantalla3" class="pantalla">
+    <h2>¿Quieres estar toda la vida conmigo? 💍</h2>
+    <button onclick="siguientePantalla(4)">Sí, siempre contigo 💘</button>
+  </div>
+
+  <div id="pantalla4" class="pantalla">
+    <h2>¡Me haces el más feliz del mundo! 🥹</h2>
+    <p>Prometo seguir eligiéndote todos los días, cuidarte, y amarte con todo mi ser. Vamos a hacer de la vida algo precioso juntos.</p>
+    <button onclick="mostrarFinal()">Ver sorpresa final 🎁</button>
+  </div>
+
+  <div id="pantalla5" class="pantalla">
+    <h1>🎉 ¡TE AMO CON TODO MI CORAZÓN! 🎉</h1>
+    <p>Nunca dejes de sonreír, nunca dejes de soñar, y nunca dejes de ser tú... porque yo ya no puedo imaginar un futuro sin ti.</p>
+  </div>
+
+  <script>
+    function siguientePantalla(num) {
+      document.querySelectorAll('.pantalla').forEach(p => p.classList.remove('activa'));
+      document.getElementById('pantalla' + num).classList.add('activa');
+    }
+
+    function mostrarFinal() {
+      siguientePantalla(5);
+      lanzarTeAmo();
+    }
+
+    function lanzarTeAmo() {
+      setInterval(() => {
+        const el = document.createElement('div');
+        el.textContent = 'Te amo 💕';
+        el.classList.add('teamo');
+        el.style.left = Math.random() * 100 + 'vw';
+        el.style.fontSize = (1 + Math.random() * 2) + 'em';
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 6000);
+      }, 300);
+    }
+  </script>
+</body>
+</html>
